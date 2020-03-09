@@ -5,29 +5,31 @@ import {
   Switch
 } from 'react-router-dom';
 
-function App() {
-  const subpages = Object.keys(routes).map(function(route) {
-    const current = routes[route];
-    return (
-        <Route path={current.url}>{current.page}</Route>
-    );
-  });
+import Footer from './components/Footer'
 
-  function Header() {
-    return (
-        <header class="business-header"></header>
-    );
-  }
+function Header() {
+  return (
+      <header className="business-header"></header>
+  );
+}
+
+function App() {
+  // const subpages = Object.keys(routes).map(function(route) {
+  //   const current = routes[route];
+  //   return (
+  //       <Route path={current.url}>{current.page}</Route>
+  //   );
+  // });
 
   return (
     <div>
       <Header/>
-      <Router>
+      {/* <Router>
         <MainMenu/>
         <Switch>
           {subpages}
         </Switch>
-      </Router>
+      </Router> */}
       <Footer/>
     </div>
   );
