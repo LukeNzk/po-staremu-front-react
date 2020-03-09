@@ -10,11 +10,11 @@ function AboutPage() {
 }
 
 function ProjectsPage() {
-  return (<p>empty</p>);
+  return (<p>Projects</p>);
 }
 
 function MediaPage() {
-  return (<p>empty</p>);
+  return (<p>Media</p>);
 }
 
 const routes = {
