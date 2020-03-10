@@ -1,4 +1,6 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { connect } from 'react-redux'
+import { updateCalendar } from '../../actions';
 
 function FormatDateTime(dateTime) {
   const roman = [ "I", "II", "III", "IV", "V", "VI", 
@@ -44,47 +46,24 @@ function EventTile(props) {
   return (
     <div className="col-sm-4 my-4">
       <div className="card">
-        <TileHeader time={props.time}></TileHeader>
-        <TileThumb url={props.img}></TileThumb>
+        <TileHeader time={props.startDate}></TileHeader>
+        <TileThumb url={props.imageUrl}></TileThumb>
         <TileBody title={props.title} desc={props.desc}></TileBody>
-        <TileFooter url={props.url}></TileFooter>
+        <TileFooter url={props.eventUrl}></TileFooter>
       </div>
     </div>
   );
 }
 
-function Calendar() {
-  // const myData = {
-  //   "events": [
-  //     {
-  //       "time": "2019-01-20T14:32",
-  //       "place": "POS",
-  //       "title": "Kolędniczy potańc po staremu",
-  //       "url": "https://www.facebook.com/events/199109267695571/",
-  //       "img": "https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/47441220_2269027789838005_8568996476108144640_o.jpg?_nc_cat=104&_nc_ohc=uc3yFr0ENoMAX8-D-V_&_nc_ht=scontent-frt3-1.xx&oh=8e14369a143ce77a9ef05bd58f854b44&oe=5E8F85E7",
-  //       "desc": "Nauka tradycyjnych kolęd, warsztaty tańca dla początkujących"
-  //     },
-  //     {
-  //       "time": "2019-01-20T14:32",
-  //       "place": "POS",
-  //       "title": "Kolędniczy potańc po staremu",
-  //       "url": "https://www.facebook.com/events/199109267695571/",
-  //       "img": "https://scontent-frt3-1.xx.fbcdn.net/v/t1.0-9/47441220_2269027789838005_8568996476108144640_o.jpg?_nc_cat=104&_nc_ohc=uc3yFr0ENoMAX8-D-V_&_nc_ht=scontent-frt3-1.xx&oh=8e14369a143ce77a9ef05bd58f854b44&oe=5E8F85E7",
-  //       "desc": "Nauka tradycyjnych kolęd, warsztaty tańca dla początkujących"
-  //     }
-  //   ]
-  // };
+function Calendar(props) {
   const [myData, setData] = useState(null);
 
-  if (!myData)
-  {
-    console.log("Loading calendar json.");
-    fetch('content/calendar.json')
-      .then(response => response.json())
-      .then(response => setData(response));
-  }
+  const handleSetData = data => {
+    console.log(data);
+  };
 
-  const eventTiles = myData ? myData.events.map((eventData) => <EventTile {...eventData}/>) : null;
+  const eventTiles = props.calendar.events ? props.calendar.events.map(event => <EventTile {...event}/>) : null;
+  
   return (
     <div className="container">
       <div className="row">
@@ -94,4 +73,14 @@ function Calendar() {
   );
 }
 
-export default Calendar;
+const mapStateToProps = state => {
+  return {
+    calendar: state.calendar
+  };
+}
+
+const mapDispatchToProps = dispatch => {
+  return { };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
