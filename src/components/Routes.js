@@ -1,12 +1,13 @@
-import React from "react";
-import Calendar from "./Calendar"
+import React from 'react';
+import Calendar from './Calendar';
+import About from './About';
 
 function HomePage() {
   return (<Calendar/>);
 }
 
 function AboutPage() {
-  return (<p>About</p>);
+  return (<About/>);
 }
 
 function ProjectsPage() {
