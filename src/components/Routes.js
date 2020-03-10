@@ -1,6 +1,9 @@
 import React from 'react';
+
 import Calendar from './Calendar';
 import About from './About';
+import Media from './Media';
+
 
 function HomePage() {
   return (<Calendar/>);
@@ -15,7 +18,7 @@ function ProjectsPage() {
 }
 
 function MediaPage() {
-  return (<p>Media</p>);
+  return (<Media/>);
 }
 
 const routes = {
