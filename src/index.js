@@ -9,12 +9,16 @@ import { createStore } from 'redux';
 import rootReducer from './reducers'
 
 import { updateCalendar } from './actions'
+import Firebase from './components/Firebase'
 
 const store = createStore(rootReducer);
 
-fetch('content/calendar.json')
-  .then(response => response.json())
-  .then(response => store.dispatch(updateCalendar(response)));
+const firebase = new Firebase();
+firebase.calendarDoc().get().then(doc => {
+  console.log(doc.data());
+  store.dispatch(updateCalendar(doc.data()));
+});
+
 
 ReactDOM.render(
   <Provider store={store}>
