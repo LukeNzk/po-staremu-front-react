@@ -16,7 +16,7 @@ function Paragraph(props) {
 
 function BulletPoint(props) {
   return (
-      <div class="col-sm-4">
+      <div className="col-sm-4">
         <img src={props.icon}/>
         <h2>{props.title}</h2>
         <p>{props.children}</p>
@@ -26,7 +26,7 @@ function BulletPoint(props) {
 
 function BulletPoints() {
   return (
-    <div class="row text-center">
+    <div className="row text-center">
       <BulletPoint title="ZNALEŹĆ" icon={icon1}>
         Fundacja Po Staremu zajmuje się odkrywaniem najcenniejszych elementów tradycji poprzez kontakt z osobami, 
         które je pamiętają, zapisy, filmy, czy nagrania audio. Poszukiwania są prowadzone od wielu lat.
