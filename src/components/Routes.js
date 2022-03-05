@@ -3,6 +3,7 @@ import React from 'react';
 import Calendar from './Calendar';
 import About from './About';
 import Media from './Media';
+import Projects from './Projects';
 
 
 function HomePage() {
@@ -14,7 +15,7 @@ function AboutPage() {
 }
 
 function ProjectsPage() {
-  return (<p>Projects</p>);
+  return (<Projects/>);
 }
 
 function MediaPage() {

@@ -11,7 +11,8 @@ function FormatDateTime(dateTime) {
 }
 
 function TileHeader(props) {
-  const dateTime = new Date(props.time);
+  console.log(props);
+  const dateTime = new Date(props.time.toDate());
   return (
     <div className="card-head px-4">
       {FormatDateTime(dateTime)}
